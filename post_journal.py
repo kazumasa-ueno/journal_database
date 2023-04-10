@@ -2,6 +2,7 @@ import requests
 import pdf2doi
 from pprint import pprint
 import json
+import sys
 from keys import notion_api_key, databases_id
 
 def get_doi_url(get_doi):
@@ -10,7 +11,10 @@ def get_doi_url(get_doi):
 def get_request_url(end_point):
     return f'https://api.notion.com/v1/{end_point}'
   
-filename = input()
+if __name__ == '__main__':
+    args = sys.argv
+
+filename = args[1]
 
 headers = {"Authorization": f"Bearer {notion_api_key}",
            "Content-Type": "application/json",
